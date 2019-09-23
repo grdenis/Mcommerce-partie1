@@ -96,7 +96,6 @@ public class ProductController {
         return productDao.chercherUnProduitCher(400);
     }
 
-    // Récupérer un produit par son Id
     @ApiOperation(value = "Calcul la marge pour chaque produit")
     @GetMapping(value = "/AdminProduits")
 
@@ -109,6 +108,12 @@ public class ProductController {
         }
 
         return marges;
+    }
+
+    @ApiOperation(value = "Trier les produits par ordre alphabétique")
+    @GetMapping(value = "/TrierProduits")
+    public List<Product> trierProduitsParOrdreAlphabetique() {
+        return productDao.findAllByOrderByNomAsc();
     }
 
 }
